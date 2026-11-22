@@ -1,0 +1,2 @@
+const test=require('node:test'),assert=require('node:assert/strict'),{spawnSync}=require('node:child_process');
+for(const dir of ['dist','dist-cjs']) test(dir+' CLI and legacy SQLite',()=>{const out=spawnSync(process.execPath,[dir+'/cli.js','doctor'],{encoding:'utf8'});assert.equal(out.status,0,out.stderr);assert.deepEqual(JSON.parse(out.stdout),{value:'hello',production_go:false});const bad=spawnSync(process.execPath,[dir+'/cli.js','invalid'],{encoding:'utf8'});assert.equal(bad.status,2);});
