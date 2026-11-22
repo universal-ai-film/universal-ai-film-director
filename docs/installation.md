@@ -195,7 +195,7 @@ Windows CMD, Node.js 26.13.0, Codex CLI 0.166.0 and Skills CLI 1.7.4 were used f
 
 The subsequent A Little Hope planning workflow used installed skill references and runtime checks, saved Project Bible and Production Packet, approved a scoped dialogue change, recovered checkpoint 7 and previewed an audio-only change without requiring a synthetic locked picture change. No actual media was inspected or generated. See the [V2.7 acceptance matrix](ROADMAP.md#v27--comprehensive-end-to-end-acceptance) for evidence scope and observations.
 
-Development baseline `bec62ca36a992564fc1c4d45a9c6aaccd20ad809` passed Linux 448/448 and Windows CRLF 447/448 (one skip, zero failures) in [hosted validation](https://github.com/universal-ai-film/universal-ai-film-director/actions/runs/45013645011). Exact final-candidate public installation smoke and CodeQL remain to be verified. Marketplace ZIP build success does not establish marketplace acceptance.
+Development baseline `bec62ca36a992564fc1c4d45a9c6aaccd20ad809` passed Linux 448/448 and Windows CRLF 447/448 (one skip, zero failures) in [hosted validation](https://github.com/universal-ai-film/universal-ai-film-director/actions/runs/45013645011). Final candidate `88c62da73aa0cc6552d2b0bf6b55b41fd57a69e0` CI passed; CodeQL passed on the file-identical preparation PR head. Exact final-candidate public installation smoke was not performed and explicitly accepted as a release exception. Marketplace ZIP build success does not establish marketplace acceptance.
 
 ## Compatible agents without Skills CLI
 
