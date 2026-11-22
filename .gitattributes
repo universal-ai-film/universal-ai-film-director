@@ -1,0 +1,6 @@
+# Runtime rendering embeds canonical script text in an LF template.
+# Keep both sides of generated-file identity checks stable across checkouts.
+/scripts/*.js text eol=lf
+/skills/*/scripts/runtime.js text eol=lf
+/contracts/*.schema.json text eol=lf
+/skills/*/assets/*.schema.json text eol=lf
