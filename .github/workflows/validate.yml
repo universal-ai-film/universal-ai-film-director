@@ -41,3 +41,28 @@ jobs:
           path: build/behavior-report.json
           if-no-files-found: error
           retention-days: 14
+  validate-windows:
+    runs-on: windows-latest
+    steps:
+      - name: Enable CRLF checkout
+        run: git config --global core.autocrlf true
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify the Director entrypoint was checked out with CRLF
+        run: node -e "const text = require('node:fs').readFileSync('skills/universal-ai-film-director/SKILL.md', 'utf8'); require('node:assert/strict').ok(text.startsWith('---\r\n'), 'Expected CRLF checkout')"
+      - name: Validate protected files
+        run: node tests/regression/check_preservation.js
+      - name: Validate repository structure and links
+        run: node tests/validate_repo.js
+      - name: Verify all seven skill runtimes match canonical scripts
+        run: node scripts/build-skill-runtimes.js --check
+      - name: Verify installed contracts match canonical schemas
+        run: node scripts/build-skill-contracts.js --check
+      - name: Validate isolated skill payload
+        run: node tests/package/validate-package.js
+      - name: Run complete Node.js regression suite
+        run: node --test 'tests/node/*.test.js'

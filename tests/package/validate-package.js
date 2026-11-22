@@ -1,5 +1,6 @@
 'use strict';
 const fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict');
+const {normalizeNewlines}=require('../helpers/normalize-newlines.js');
 const ROOT=path.resolve(__dirname,'../..');
 const names=require('../validate_repo.js').names;
 function validate(){
@@ -19,7 +20,7 @@ function validate(){
   assert(actual.every(x=>x==='SKILL.md'||/^references\/[a-z0-9-]+\.md$/.test(x)||/^assets\/[a-z0-9-]+\.md$/.test(x)||/^assets\/[a-z0-9-]+\.schema\.json$/.test(x)||x==='scripts/runtime.js'),'Unexpected file in runtime payload: '+name);
   assert(!actual.some(x=>x.includes('README')||x.includes('CHANGELOG')||x.includes('tests/')),'Development files leaked into skill: '+name);
   const doc=fs.readFileSync(path.join(dir,'SKILL.md'),'utf8');
-  assert(doc.startsWith('---\nname: '+name+'\n'),'Bad frontmatter: '+name);
+  assert(normalizeNewlines(doc).startsWith('---\nname: '+name+'\n'),'Bad frontmatter: '+name);
  }
  return names;
 }
