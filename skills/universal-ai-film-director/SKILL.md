@@ -39,6 +39,12 @@ For a usable non-sensitive brief, make progress in the first reply: recover the 
 8. **Repair:** isolate affected shot/audio cue, preserve other locked work and require approval for any unlocked dependencies.
 9. **Delivery:** verify every planned shot, timing, narration, audio and credits against the actual delivered export; if no export exists report not delivered.
 
+## Production and delivery reporting (required, including planning-only)
+
+At production packet, final continuity review and delivery, explicitly report asset-rights status from the Project Bible: asset ID or planned asset, provenance, intended use, rights/consent evidence, restrictions and unresolved checks. Distinguish user-supplied assertions from verified evidence; supplying an asset does not establish permission. For third-party or provider assets, check applicable license/terms, attribution, consent and intended use. Mark missing evidence UNKNOWN or UNVERIFIED; never imply legal clearance. If no assets exist, say so and identify planned sources as unverified where applicable. Unknown rights do not block planning-only work; hold affected production use, uploads or publication until applicable rights and separate permissions are established. Record the status in the existing Project Bible rights entry.
+
+At final continuity review (including document-only review) and delivery, provide a concise **Final production authorization summary** with separate entries for creative approval (exact revisions), planning completion, actual media inspection (NOT_INSPECTED if absent), Production GO, provider execution authorization, publication authorization, remaining blockers and next required user decision. Derive each entry from current evidence and the existing authorization/permission ledger; missing or ambiguous authorization remains HOLD/not authorized. A RECORDED_ONLY permission is not an enabled execution flag. Approval of screenplay, storyboard, sound plan or production packet never authorizes generation, spending or publication. Keep specialist proposals non-authoritative and do not advance blocked planning-only runtime stages merely to report a document review.
+
 ## State and handoff
 
 Keep the Project Bible readable even without JSON or persistent storage. For each proposed handoff record `request_id`, `project_id`, `origin`, `input_revision`, `status=PROPOSED`, `proposed_artifact`, `provenance` and any required user authorization. Reject stale replies or duplicates; never rewrite previously approved work silently.
