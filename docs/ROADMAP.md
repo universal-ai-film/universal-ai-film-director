@@ -2,7 +2,7 @@
 
 **Canonical roadmap · updated 2026-11-15.** This is the single source of truth for version outcomes and acceptance gates. [Development governance](DEVELOPMENT.md) defines the main/develop PR workflow. Historical V2.0 release evidence remains in [the release checklist](archive/releases/v2.0.0-checklist.md) and Git history.
 
-> **Current state:** [v2.7.0](https://github.com/universal-ai-film/universal-ai-film-director/releases/tag/v2.7.0) is the latest stable software release (2026-11-22; owner-confirmed publication, tag verified at `88c62da73aa0cc6552d2b0bf6b55b41fd57a69e0`). Owner-operated planning acceptance and final CI passed with documented exceptions. Independent unfamiliar-user onboarding and fresh real-media QA remain NOT_RUN; universal host compatibility and live Studio integration remain NOT_VERIFIED. V3.0 research on develop is the next proposed milestone, subject to separate approval. **The Last Light Production GO remains HOLD**; software publication does not authorize provider spending, media generation or film publication.
+> **Current state:** [v2.7.0](https://github.com/universal-ai-film/universal-ai-film-director/releases/tag/v2.7.0) is the latest stable software release (2026-11-22; owner-confirmed publication, tag verified at `88c62da73aa0cc6552d2b0bf6b55b41fd57a69e0`). Owner-operated planning acceptance and final CI passed with documented exceptions. Independent unfamiliar-user onboarding and fresh real-media QA remain NOT_RUN; universal host compatibility and live Studio integration remain NOT_VERIFIED. V3.0 Phase 0 and Phase 1 design direction are owner-approved; Phase 1A documentation is under review and Phase 1B requires separate approval. **The Last Light Production GO remains HOLD**; software publication does not authorize provider spending, media generation or film publication.
 
 ## Release direction — master roadmap
 
@@ -19,7 +19,7 @@ This is the **authoritative release table** for Director. Historical releases ar
 | [V2.5.0](https://github.com/universal-ai-film/universal-ai-film-director/releases/tag/v2.5.0) | 2026-11-15 | Intelligent Budget Director, manual/local/mock production, media QA and recovery | Future E4/E5 foundations | **RELEASED — limited** | CI evidence; real-media/independent host acceptance pending |
 | [V2.6.0](https://github.com/universal-ai-film/universal-ai-film-director/releases/tag/v2.6.0) | 2026-11-15 | Planning templates, community readiness, portable Studio-facing contracts | **E1 foundation** for Studio S2 | **RELEASED** | Contract/schema/installation checks; Studio integration not yet verified |
 | [V2.7.0](https://github.com/universal-ai-film/universal-ai-film-director/releases/tag/v2.7.0) | 2026-11-22 | **Comprehensive validation of everything released in V2.0–V2.6:** seven-skill workflow, portability, approvals, budget, continuity, repair, checkpoints, QA and final delivery | **E1 compatibility evidence** alongside Studio S0/S2; no dependency on Studio app completion | **RELEASED — scoped acceptance** | T1–T8 matrix recorded; owner-operated planning and CI passed; independent and real-media gaps disclosed |
-| **V3.0** | Next: research; date TBD | Shared provider-neutral production engine, Persistent Director, mode-aware Project Bible, jobs, provenance, resumability and safe local/manual/mock adapters | **E2 portable package research; E3 handoff; E4 job contract** | **PROPOSED — feasibility-gated** | Typed contracts, negative/security tests, recovery, cost/permission safety and explicit implementation/release approval |
+| **V3.0** | Phase 1A; date TBD | Shared provider-neutral production engine, Persistent Director, mode-aware Project Bible, jobs, provenance, resumability and safe local/manual/mock adapters | **E2 portable package research; E3 handoff; E4 job contract** | **DESIGN APPROVED — feasibility-gated** | Typed contracts, negative/security tests, recovery, cost/permission safety and explicit implementation/release approval |
 | **V3.1** | After V3.0; date TBD | **Live-action pre-production:** shooting scripts, casting/location requirements, shot lists, equipment, schedules and call sheets | Mode-aware schemas; Studio remains optional | **PROPOSED — feasibility-gated** | Human-reviewed real pre-production scenario, consent/rights constraints |
 | **V3.2** | After V3.1; date TBD | **Live-action on-set assistance:** offline take logs, coverage, camera setups, continuity and daily records | Optional future Studio production views | **PROPOSED — feasibility-gated** | Human-confirmed offline workflows, safety boundaries, recovery |
 | **V3.3** | After V3.2; date TBD | **Live-action post-production:** footage organization, edit/sound/caption guidance and export QA | **E5** future Studio timeline and assembly, not a mandatory dependency | **PROPOSED — feasibility-gated** | Rights-cleared footage and real output inspection; no unsupported automated analysis |
@@ -98,6 +98,25 @@ Software release GO authorized and publication owner-confirmed with remaining li
 | **V3.4** | Full live-action workflow validation | Idea-to-delivery case study and regression of AI mode | Independent real production evidence, safety/rights/media quality review |
 
 **V4 (future research):** advanced cross-modal continuity, production-aware localized repair, AI/live-action hybrid assets, Studio mode-aware experiences and community extensions. These are hypotheses, not approved features or a guaranteed V4 release.
+
+
+### V3.0 Phase 0–1 architecture decision and delivery sequence (2026-11-22)
+
+Owner approved Phase 0 and Phase 1 design recommendations and the 18 ADRs in [architecture](architecture.md#v30-architecture-decisions--phase-1a). Phase 1A is documentation only; full implementation remains HOLD. SQLite, Node compatibility and execution authority remain feasibility-gated. No change to stable V2.7 or Studio.
+
+| Phase | Scope | Review boundary |
+|---|---|---|
+| 1A | Architecture and ADR documentation | Documentation PR only |
+| 1B | SQLite/Node portability and resilience spike | Separate approval; [required tests](../research/v3/README.md#phase-1b-feasibility-gate) |
+| 2 | Versioned domain contracts and invariants | Schema and negative tests |
+| 3 | Persistent runtime, imports/exports, checkpoints | Transactional state and recovery |
+| 4 | Approvals, locks and read-only previews | Authority and trust-boundary review |
+| 5 | Jobs, attempts, idempotency, reconciliation and budget | No automatic resubmission or unauthorized spending |
+| 6 | Mock, manual and local-file adapters | Provenance and actual inspection distinctions |
+| 7 | Optional runtime integration with seven skills | Legacy packaging and host acceptance |
+| 8 | Migration, cross-platform and end-to-end acceptance | Separate release approval |
+
+First vertical slice: import a V2.7 planning project, persist creative history, export its Bible, preview a scoped revision without writes, apply separately approved changes, reopen and verify revisions/locks and Production HOLD. Reuse A Little Hope for migration and The Last Light for mock jobs. Independent users, real-media QA and fresh host evidence remain separate acceptance gaps. Community growth continues alongside development. Target incremental software cost zero; no paid APIs or cloud infrastructure required.
 
 ## Cross-product integration — E1 to E6
 
@@ -339,7 +358,7 @@ Historical phase mapping: architecture and planning tests → V2.0 baseline; fiv
 3. **No simulated evidence:** distinguish implementation, CI checks, independent host runs, human-reviewed footage, external-user trials and authorization. Record exact PR/commit and relevant logs for milestone closure.
 4. **Separate approvals:** PR merge, software release, creative decisions, provider access, paid execution and film publication are different gates. **Production GO remains HOLD**.
 5. **Release gate:** only create a tag or GitHub release after exact-SHA validation, applicable security/rights review and separate owner authorization. No permanent release branch required.
-6. **Next practical step (current):** begin separately approved V3.0 feasibility research on develop; retain deferred independent-user, cross-host and real-media evidence. Studio proceeds independently. V3.0–V3.4 remain proposals, not implementation GO.
+6. **Next practical step (current):** review Phase 1A architecture documentation and separately authorize Phase 1B on develop; retain deferred independent-user, cross-host and real-media evidence. Studio proceeds independently. V3.0–V3.4 remain proposals, not implementation GO.
 
 
 ## Two-year product roadmap — November 2026 to November 2028
