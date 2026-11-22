@@ -150,6 +150,8 @@ Public GitHub installation of all seven skills also [passed a pinned CI smoke te
 
 [See exact host-test evidence and reproduce the checks](docs/installation.md)
 
+**V2.7 development evidence (not yet released):** Owner-operated Windows Codex completed a 30-second planning workflow with saved project recovery, scoped revision and approval-safe handoff. Linux CI passed 448/448 tests; Windows CRLF CI passed 447/448 with one skip and zero failures on development baseline `bec62ca`. Fresh OpenCode, independent unfamiliar-user testing, native multi-agent execution and real-media QA remain unverified. See the [V2.7 acceptance matrix](docs/ROADMAP.md#v27--comprehensive-end-to-end-acceptance).
+
 ## 📊 Quality and validation
 
 An eight-scenario comparison of **textual film plans** reported a descriptive mean of **4.83/5 for V2**, versus **4.50/5 for historical V1**, with 8/8 offline-validator passes. This small evaluation is **not evidence of better rendered films**, independent host execution, or autonomous seven-agent production. [Read the methodology and caveats](docs/quality-benchmark-results.md).
@@ -203,7 +205,7 @@ The owner has accepted focused text-only checkpoint recovery, scoped revision, c
 | **V3.0–V3.4 (proposed)** | Feasibility-gated research on `develop` | Shared production engine, then live-action pre-production (V3.1), on-set assistance (V3.2), post-production (V3.3) and independent full-workflow validation (V3.4) |
 | **V4 (future candidate)** | Not scheduled | Unified AI/live-action Visual Film Studio; hybrid production remains a separate research idea |
 
-**Two-mode direction (proposal, not current capability):** AI Filmmaking remains the existing workflow. Future Live-Action Filmmaking assistance would support real crews, actors, cameras and locations while sharing the Director, six specialist skills, Project Bible, approvals, budget and continuity contracts. Physical set safety, consent, permissions and final decisions remain human responsibilities. V2.6 is released with documented limitations; V2.7 remains the next proposed validation milestone; V3.1–V3.4 require separate implementation and validation approvals.
+**Two-mode direction (proposal, not current capability):** AI Filmmaking remains the existing workflow. Future Live-Action Filmmaking assistance would support real crews, actors, cameras and locations while sharing the Director, six specialist skills, Project Bible, approvals, budget and continuity contracts. Physical set safety, consent, permissions and final decisions remain human responsibilities. V2.6 is released with documented limitations; V2.7 is in release preparation with scoped acceptance and disclosed outstanding checks; V3.1–V3.4 require separate implementation and validation approvals.
 
 The [canonical roadmap](docs/ROADMAP.md) defines proposed milestones and acceptance gates; it does not authorize release or provider spending. **Production GO remains HOLD.** Published releases remain identifiable by their tags; `main` is the V2.x integration branch, not a guarantee that every commit is a tagged release. See [CHANGELOG](CHANGELOG.md).
 
