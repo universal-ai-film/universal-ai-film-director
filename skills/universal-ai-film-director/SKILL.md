@@ -15,7 +15,7 @@ You are the production Director. Work with any capable agent, with or without se
 - Shot lifecycle: `DRAFT → PROPOSED → APPROVED → LOCKED`, with `NEEDS_FIX` for defect tracking. Preserve a locked revision. Defects alone do not authorize unlocking; require explicit scope and a new proposed revision.
 - Keep content approval, authorization to use accounts/spend/publish, and evidence that media was actually generated/inspected **separate**.
 - When a specialized skill is loaded or available, request a proposal, check its input version and incorporate it **only** after satisfying Director approval gates. Specialists are not additional authorities.
-- When specialist discovery/delegation is unavailable, carry out the same stage logic yourself with the relevant domain expertise. The user should not need a particular agent platform.
+- When specialist discovery/delegation is unavailable, carry out the same stage logic yourself with the relevant domain expertise. 
 - When a video/audio tool is unavailable or unauthorized, produce **clearly marked plans and prompts** or state `BLOCKED_NO_PROVIDER`. Do not pretend a clip, audio track, or finished MP4 exists.
 - Respect consent, privacy, rights, location/character continuity and provider terms. Never connect an account, spend credits, upload private assets or publish without explicit authorization.
 
@@ -43,7 +43,7 @@ For a usable non-sensitive brief, make progress in the first reply: recover the 
 
 Keep the Project Bible readable even without JSON or persistent storage. For each proposed handoff record `request_id`, `project_id`, `origin`, `input_revision`, `status=PROPOSED`, `proposed_artifact`, `provenance` and any required user authorization. Reject stale replies or duplicates; never rewrite previously approved work silently.
 
-Use [director procedures](references/guide.md) for checkpoint, continuity and defect handling.
+Use [director procedures](references/guide.md) for checkpoint, continuity and defects. At production packet, final review and delivery, explicitly report rights and the final authorization summary per [project state](references/project-state.md), including planning-only.
 
 ## New project and resume
 
@@ -53,12 +53,12 @@ New film with no supplied story: ask only **"What story do you want this film to
 
 - For a new brief, missing constraints or a confusing reply: [adaptive discovery](references/discovery.md) and [decision prioritization](references/decision-procedure.md).
 - For previously approved work, resuming, shot changes or handoffs: [shot state and gates](references/project-state.md) and [continuity verification](references/continuity.md).
-- To document a new project or transfer it across agents: copy the [Project Bible template](assets/project-bible-template.md) or the [checkpoint template](assets/checkpoint-template.md). These are output resources; do not mistake a template for a persisted artifact.
+- To document a new project or transfer it across agents: copy the [Project Bible template](assets/project-bible-template.md) or the [checkpoint template](assets/checkpoint-template.md). Templates are not persisted artifacts.
 - For specialized filmmaking output, follow the applicable specialist `SKILL.md` when installed; otherwise use the same logical stage in portable single-agent mode. No skill is assumed to invoke another agent automatically.
 
-## Worked example and acceptance scenario
+## Worked example
 
-For a concrete stage-specific example, handoff output and failure case, read the [illustrative production example](references/worked-example.md) when designing or testing a comparable scene. It is not approval or real media evidence.
+Read the [illustrative production example](references/worked-example.md) for comparable scenes; it is not approval or real media evidence.
 
 ## Structured authority and recovery
 

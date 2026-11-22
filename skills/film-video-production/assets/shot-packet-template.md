@@ -9,6 +9,7 @@
 **Narrative objective:**
 **Duration:**
 **Reference assets (exact IDs/paths, approval and provenance; or UNAVAILABLE):**
+**Asset-rights status (asset IDs, provenance, intended use, rights/consent evidence, restrictions or UNKNOWN/UNVERIFIED; no assets if applicable):**
 **Continuity from prior shot:**
 **State-changing props (stable ID; before owner/location; visible contact/transfer/release; after owner/location; downstream retained state, or UNRESOLVED):**
 **Copy-ready video prompt:**
