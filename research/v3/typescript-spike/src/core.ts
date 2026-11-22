@@ -19,7 +19,7 @@ export function probe(file: string, legacyPath: string): Snapshot {
  const reopened = new DatabaseSync(file);
  try {
   const row = reopened.prepare('SELECT value FROM state').get();
-  if (typeof row?.value !== 'string') throw Error('invalid row');
+  if (typeof row !== 'object' || row === null || !('value' in row) || typeof row.value !== 'string') throw Error('invalid row');
   return {value:row.value,production_go:false};
  } finally { reopened.close(); }
 }
