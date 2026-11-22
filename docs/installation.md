@@ -189,6 +189,14 @@ OpenCode export identifies host version `1.19.5`, Build mode and `opencode/beam-
 
 **Scoped result: two-host targeted skill loading and planning PASS.** This replaces the earlier screenshot-only evidence gap for this specific task, but does not certify all-agent compatibility. Existing CI installation PASS is a separate evidence category. The remaining exact-source and clean-user limits should be disclosed at release review; V2.1.0 is not released or authorized by this observation.
 
+## V2.7 owner-operated Windows acceptance (2026-11-22)
+
+Windows CMD, Node.js 26.13.0, Codex CLI 0.166.0 and Skills CLI 1.7.4 were used for project-local seven-skill installation and planning tests. Earlier Phase 3 file-parity checks covered 67 files across seven packages and standalone QA runtime; the V2.6-to-development overwrite used identical skill payloads at that point, not a demonstrated migration. Fresh OpenCode, isolated individual live invocation and uninstall/reinstall coverage were deferred. These tests are owner-operated, not independent unfamiliar-user acceptance.
+
+The subsequent A Little Hope planning workflow used installed skill references and runtime checks, saved Project Bible and Production Packet, approved a scoped dialogue change, recovered checkpoint 7 and previewed an audio-only change without requiring a synthetic locked picture change. No actual media was inspected or generated. See the [V2.7 acceptance matrix](ROADMAP.md#v27--comprehensive-end-to-end-acceptance) for evidence scope and observations.
+
+Development baseline `bec62ca36a992564fc1c4d45a9c6aaccd20ad809` passed Linux 448/448 and Windows CRLF 447/448 (one skip, zero failures) in [hosted validation](https://github.com/universal-ai-film/universal-ai-film-director/actions/runs/45013645011). Exact final-candidate public installation smoke and CodeQL remain to be verified. Marketplace ZIP build success does not establish marketplace acceptance.
+
 ## Compatible agents without Skills CLI
 
 If your environment cannot install Agent Skills through the CLI, load `skills/universal-ai-film-director/SKILL.md` and the linked `references/` documents in your agent, using its supported instructions mechanism. The Director can carry out the workflow using one agent, without native specialist delegation.
