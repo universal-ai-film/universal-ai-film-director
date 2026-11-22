@@ -41,6 +41,17 @@ jobs:
           path: build/behavior-report.json
           if-no-files-found: error
           retention-days: 14
+      - name: Build marketplace plugin ZIP
+        run: |
+          git archive --format=zip --output=build/universal-ai-film-director.zip HEAD .claude-plugin/plugin.json skills/ LICENSE
+          unzip -tq build/universal-ai-film-director.zip
+      - name: Upload marketplace plugin ZIP
+        uses: actions/upload-artifact@v4
+        with:
+          name: universal-ai-film-director-marketplace
+          path: build/universal-ai-film-director.zip
+          if-no-files-found: error
+          retention-days: 14
   validate-windows:
     runs-on: windows-latest
     steps:
