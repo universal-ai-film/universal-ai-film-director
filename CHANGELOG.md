@@ -6,6 +6,13 @@ tags, not by duplicated skill source folders.
 
 ## [Unreleased]
 
+### V2.7.0 — release preparation (not published)
+
+- Addressed F01–F09 and F11–F13 across five remediation PRs; F10 classified as a non-defect. Strengthened acceptance evidence, portable validation, approval and permission integrity, specialist handoffs, rights disclosure and Windows CRLF support.
+- Development baseline `bec62ca36a992564fc1c4d45a9c6aaccd20ad809`: Linux 448 passed; Windows 447 passed, one skipped; zero failures. [CI evidence](https://github.com/universal-ai-film/universal-ai-film-director/actions/runs/45013645011).
+- Owner accepted Phase 4 planning evidence and observations. Fresh OpenCode, independent unfamiliar-user acceptance, native independent delegation and real-media QA remain deferred/unverified. See [canonical acceptance matrix](docs/ROADMAP.md#v27--comprehensive-end-to-end-acceptance) for remediation links, scope and limitations.
+- Release HOLD pending exact-candidate checks and separate owner authorization. V2.6.0 remains published stable.
+
 ## [2.6.0] — 2026-11-15
 
 Stable software/planning release: [v2.6.0](https://github.com/universal-ai-film/universal-ai-film-director/releases/tag/v2.6.0), published at commit `7c455692dc564894bf2cb6e951b8909e8b753acb`. Independent onboarding and broad real-world workflow validation are deferred to V2.7 without being marked PASS.
