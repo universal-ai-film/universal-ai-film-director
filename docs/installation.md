@@ -79,6 +79,22 @@ git checkout v1.0.0
 
 This historical checkout is not required for the current modular skill installation.
 
+## Test the marketplace plugin package
+
+From the repository root, load the plugin for a local Claude Code session:
+
+```bash
+claude --plugin-dir .
+```
+
+In a clean session, confirm the Director and six specialists are discoverable and run the guided walkthrough above. For OpenAI, download the `universal-ai-film-director-marketplace` artifact from the GitHub Actions **Validate skill** run for the commit you want to test. Extract the outer Actions download and use the inner `universal-ai-film-director.zip` as the **Skills only** upload in the OpenAI plugin dashboard. Check that all seven skills appear in the draft and repeat the walkthrough on the target host.
+
+To recreate the submission ZIP from a committed checkout:
+
+```bash
+git archive --format=zip --output=universal-ai-film-director.zip HEAD .claude-plugin/plugin.json skills/ LICENSE
+```
+
 ## Host-by-host first-use verification (V2.1)
 
 The following are **test targets, not certified integrations**. Skills CLI host options and native skill invocation vary by CLI version and agent version; inspect the CLI's supported agents and your host's current skill documentation rather than assuming that a successful copy means discovery.
