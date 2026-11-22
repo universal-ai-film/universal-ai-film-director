@@ -102,7 +102,7 @@ explicit contract review, rather than accepting any allowed stage independently.
 On Linux with Node.js 24.22.3, the 17 synthetic helper cases derived from the
 owner's Windows observations reproduced the previous 9 PASS / 8 FAIL result
 against main `56dd9c6d70b19266beb5f78488f8566ad9fca924`. The corrected helpers pass
-all 17. The complete suite passes 426/426, including 121 new regression tests for
+all 17. The complete suite passes 427/427, including 122 new regression tests for
 authority scope, immutable assets, ledger isolation, stage compatibility and
 installed-runtime behavior. Schema-instance validation additionally exercises all
 48 pairs directly and through Project Bible references.

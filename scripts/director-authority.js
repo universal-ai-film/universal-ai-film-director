@@ -20,7 +20,7 @@ function evidenceOfUser(e) {
 // Unknown wording must be clarified; never accept a matching keyword in a sentence.
 const cleanStatement = q => q.trim().replace(/[.!]$/, '').trim().replace(/\s+/g,' ');
 const statement = q => cleanStatement(q).toLowerCase();
-const unsafeClause = q => /\b(?:no|not|never|nothing|if|unless|until|after|before|once|maybe|perhaps|instead|except|but|and|or|all)\b|[?;]|[‘’"]|\b(?:don\'t|can\'t|won\'t)\b/i.test(q);
+const unsafeClause = q => /\b(?:no|not|never|nothing|if|unless|until|after|before|once|when|provided|pending|subject|maybe|perhaps|instead|except|but|and|or|all)\b|[?;]|[‘’"]|\b(?:don\'t|can\'t|won\'t)\b/i.test(q);
 const escapeRE = s => s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
 const gateAliases={script:'(?:screenplay|script)',visual_bible:'visual[ _-]bible',storyboard:'storyboard'};
 function scopeIsApproval(e,proposal,pendingCount) {
@@ -33,7 +33,7 @@ function scopeIsApproval(e,proposal,pendingCount) {
  // Exact proposal version, or a gate alias optionally followed by its version suffix.
  const version=statement(proposal.version);
  const suffix=version.match(/(?:^|[-_ ])(v\d+(?:\.\d+)*)$/)?.[1];
- return target===version || new RegExp('^'+gateAliases[proposal.gate]+(suffix?'(?:[-_ ]'+escapeRE(suffix)+')?':'')+'$').test(target);
+ return target===version&&(!/^v\d+(?:\.\d+)*$/.test(version)||pendingCount===1) || new RegExp('^'+gateAliases[proposal.gate]+(suffix?'(?:[-_ ]'+escapeRE(suffix)+')?':'')+'$').test(target);
 }
 function scopeIsUnlock(e,shotId) {
  const match=/^(?:(?:i )?(?:allow|authorize|authorise) (?:the )?)?(?:unlock|revise|replace|change|repair|modify)(?: of)? ([a-z0-9_-]+)(?: only)?$/i.exec(cleanStatement(e.quote));

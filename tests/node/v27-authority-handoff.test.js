@@ -33,6 +33,12 @@ test('F06 generic approval requires exactly one pending proposal; named scope st
  p=authority.approveGate(p,{expected_revision:p.revision,proposal_id:'P2',evidence:user('I approve the Visual Bible')});
  assert.equal(p.gates.visual_bible.approved,true);
 });
+test('F06 a bare version shared across pending gates is ambiguous',()=>{
+ let p=authority.proposeGate(contracts.newProject('v27'),{expected_revision:1,gate:'script',version:'V1',artifact_ref:'script:1',proposal_id:'P1'});
+ p=authority.proposeGate(p,{expected_revision:p.revision,gate:'visual_bible',version:'V1',artifact_ref:'visual:1',proposal_id:'P2'});
+ assert.throws(()=>approve(authority,p,'I approve V1'));
+ assert.equal(approve(authority,p,'I approve screenplay V1').gates.script.approved,true);
+});
 for(const quote of ['Do not unlock SHOT-01','Never repair SHOT-01','Unlock SHOT-01 if needed','Unlock SHOT-01 and SHOT-02','Unlock SHOT-01 or SHOT-02','Unlock SHOT-01 after revision','Unlock XSHOT-01','Unlock shot-01','Unlock SHOT-01_extra','Unlock SHOT-01?','I allow SHOT-01','I allow repair of SHOT-01 only, but wait'])
  test('F07 rejects unsafe scope: '+quote,()=>assert.throws(()=>unlock(authority,locked(),quote)));
 for(const id of ['S01_SH08','SH08','SHOT-01'])test('F07 preserves immutable source and lineage: '+id,()=>{
@@ -42,7 +48,7 @@ for(const id of ['S01_SH08','SH08','SHOT-01'])test('F07 preserves immutable sour
 for(const quote of ['I authorize publication if approved','I authorize publication after revision','I authorize generation','I allow nothing','Do I authorize publication?','I authorize publication, but wait','I never authorize publication','I authorize publication for SHOT-010','I authorize publication for SHOT-01 and SHOT-02'])
  test('F08 rejects unsafe permission: '+quote,()=>assert.throws(()=>permission(authority,contracts.newProject('v27'),quote)));
 test('F08 matching caller scope cannot smuggle conditional or negative intent',()=>{
- for(const scope of ['SHOT-01 if approved','SHOT-01 after revision','not SHOT-01','SHOT-01 and SHOT-02','SHOT-01 unless canceled'])
+ for(const scope of ['SHOT-01 if approved','SHOT-01 after revision','not SHOT-01','SHOT-01 and SHOT-02','SHOT-01 unless canceled','SHOT-01 when approved','SHOT-01 provided approval','SHOT-01 subject to approval'])
   assert.throws(()=>permission(authority,contracts.newProject('v27'),'I authorize publication for '+scope,'publication',scope));
 });
 test('F08 purpose and exact scope are bound to copied ledger evidence',()=>{
