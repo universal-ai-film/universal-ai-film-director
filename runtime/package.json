@@ -1,0 +1,26 @@
+{
+  "name": "@universal-ai-film/director-runtime",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "bin": {
+    "director": "dist/cli.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": "^22.13.0 || ^24.0.0"
+  },
+  "scripts": {
+    "check": "tsc --noEmit",
+    "build": "tsc",
+    "test": "node --test tests/*.test.mjs",
+    "test:package": "node tests/package.mjs",
+    "test:reproducible": "node tests/reproducible.mjs"
+  },
+  "devDependencies": {
+    "@types/node": "22.13.10",
+    "typescript": "5.8.3"
+  }
+}
