@@ -31,6 +31,12 @@ check('project-snapshot',{...snapshot,contract_version:'2.0'},false);
 check('project-snapshot',{...snapshot,workflow:{...snapshot.workflow,proposal_count:-1}},false);
 const handoff={contract_version:'2.0',project_id:'contract-validation',request_id:'req-1',origin:'film-storytelling',stage:'script',input_revision:1,status:'PROPOSED',proposed_artifact:{id:'draft-1',revision:1,kind:'script'},provenance:{kind:'AGENT_DRAFT',evidence_ref:null},required_authorization:['script_user_approval']};
 check('handoff',handoff,true);
+// Exercise all 48 pairs, including legitimate cross-stage output responsibilities.
+for(const rule of load('handoff').allOf)for(const stage of load('handoff').properties.stage.enum){
+ const q={...handoff,origin:rule.if.properties.origin.const,stage};
+ check('handoff',q,rule.then.properties.stage.enum.includes(stage));
+ check('project-bible',{...project,proposals:[q]},rule.then.properties.stage.enum.includes(stage));
+}
 check('handoff',{...handoff,status:'APPROVED'},false);
 check('project-bible',{...project,proposals:[handoff]},true); // resolves local cross-file $ref
 check('project-bible',{...project,proposals:[{...handoff,status:'APPROVED'}]},false);
