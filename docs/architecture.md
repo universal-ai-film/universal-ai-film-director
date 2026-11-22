@@ -77,15 +77,15 @@ The runtime is optional: agent hosts without local execution follow the Markdown
 
 ## V3.0 architecture decisions — Phase 1A
 
-Owner approved the following direction on 2026-11-22 after Phase 0 and Phase 1 design review. This is a design baseline, not implementation or production authorization. SQLite, Node compatibility and human execution authority remain feasibility-gated.
+Owner approved the following direction on 2026-11-22 after Phase 0 and Phase 1 design review. This is a design baseline, not implementation or production authorization. Phase 1C closes the scoped Node and SQLite research gates; human execution authority remains feasibility-gated.
 
 | ADR | Decision | Status |
 |---|---|---|
 | 001 | Local-first modular monolith | Accepted |
 | 002 | Hexagonal boundaries and pragmatic DDD | Accepted |
 | 003 | JavaScript/CommonJS initially | Accepted |
-| 004 | Node 22+ tested release lines; candidate floor 22.13 | Feasibility-gated |
-| 005 | SQLite preferred; in-memory test repository | Feasibility-gated |
+| 004 | Optional runtime: tested minimum 22.13.0 on Node 22; tested Node 24 line | Accepted — scoped |
+| 005 | Built-in SQLite for local persistence; in-memory test repository | Accepted — scoped |
 | 006 | Versioned JSON interchange and checkpoints | Accepted |
 | 007 | Transactional current state and append-only audit history | Accepted |
 | 008 | Preserve seven portable skills and planning fallback | Accepted |
@@ -137,4 +137,4 @@ Specialists propose, the creator authorizes, the runtime enforces, adapters exec
 
 Validate V2 Project Bible 2.0, handoff 2.0, snapshot 1.0, checkpoint and recovery envelope 1 at their respective boundaries. Preserve original files and preview migration before confirmation; use schema and domain checks. Import historical approvals with their trust classification, preserve locks and mock records without claiming byte verification; recorded-only permissions never become execution grants. Markdown extraction is a proposal requiring human confirmation. Reject unknown versions safely. V3-to-V2 export is a planning projection with all operational flags false and explicit omissions; lossless downgrade is not promised. Studio remains unchanged.
 
-SQLite is preferred over implementing custom transactional JSON locking/recovery; JSON remains interchange, memory supports unit tests. Node 22 is existing CI baseline, not proof of SQLite or host compatibility. Exact support floor, durable storage behavior and authorization boundary remain open. See [roadmap](ROADMAP.md) for phases and [research gate](../research/v3/README.md) for Phase 1B tests.
+Phase 1C selects built-in SQLite for local persistence development; JSON remains interchange and memory supports unit tests. Node 22.13.0 is the tested minimum on the 22 line, not a recommendation to install an old patch. Prefer current patched supported releases on tested 22/24 lines; no blanket claim for other versions. Node 22 emitted experimental SQLite warnings. Existing skill requirements remain unchanged. Production durability, host invocation and ADR-011 human authority are not established. See [roadmap](ROADMAP.md) and [research evidence](../research/v3/README.md#phase-1c-feasibility-closure).
