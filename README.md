@@ -8,8 +8,8 @@ Turn your film idea into a cinematic production plan with an AI Director and six
 
 **Open source · AI Agent Skills · No paid tools required for planning**
 
-[![Stable release](https://img.shields.io/badge/stable-v2.6.0-blue)](https://github.com/universal-ai-film/universal-ai-film-director/releases/tag/v2.6.0)
-[![Next milestone](https://img.shields.io/badge/next-v2.7.0-orange)](docs/ROADMAP.md)
+[![Stable release](https://img.shields.io/badge/stable-v2.7.0-blue)](https://github.com/universal-ai-film/universal-ai-film-director/releases/tag/v2.7.0)
+[![Next milestone](https://img.shields.io/badge/next-v3.0-orange)](docs/ROADMAP.md)
 [![Validate skills](https://github.com/universal-ai-film/universal-ai-film-director/actions/workflows/validate.yml/badge.svg)](https://github.com/universal-ai-film/universal-ai-film-director/actions/workflows/validate.yml)
 [![Install smoke](https://github.com/universal-ai-film/universal-ai-film-director/actions/workflows/skills-install-smoke.yml/badge.svg)](https://github.com/universal-ai-film/universal-ai-film-director/actions/workflows/skills-install-smoke.yml)
 [![MIT](https://img.shields.io/badge/code%20license-MIT-green)](LICENSE)
@@ -19,7 +19,7 @@ Turn your film idea into a cinematic production plan with an AI Director and six
 </div>
 
 
-> **Latest stable: [v2.6.0](https://github.com/universal-ai-film/universal-ai-film-director/releases/tag/v2.6.0).** Planning skills are available now; independent new-user testing and media-generation quality remain unverified. [Release details and limitations](#-releases-and-roadmap).
+> **Latest stable: [v2.7.0](https://github.com/universal-ai-film/universal-ai-film-director/releases/tag/v2.7.0).** Planning skills are available now; independent new-user testing and media-generation quality remain unverified. [Release details and limitations](#-releases-and-roadmap).
 
 ## ✨ What can you create?
 
@@ -80,7 +80,7 @@ You do **not** need video credits, a paid generator, or all seven skills to begi
 
 **New to Agent Skills?** Start with the Director-only command above. Installing all six specialists is optional; one compatible agent can guide the workflow.
 
-**Help us test V2.7:** if you're a new user, try this first-film flow and [report your agent, installation outcome, and first result](https://github.com/universal-ai-film/universal-ai-film-director/issues/new). Do not include credentials, private transcripts, or personal media.
+**Help us validate V2.7 with independent creators:** if you're a new user, try this first-film flow and [report your agent, installation outcome, and first result](https://github.com/universal-ai-film/universal-ai-film-director/issues/new). Do not include credentials, private transcripts, or personal media.
 
 ## 🎬 Meet your AI film crew
 
@@ -150,7 +150,7 @@ Public GitHub installation of all seven skills also [passed a pinned CI smoke te
 
 [See exact host-test evidence and reproduce the checks](docs/installation.md)
 
-**V2.7 development evidence (not yet released):** Owner-operated Windows Codex completed a 30-second planning workflow with saved project recovery, scoped revision and approval-safe handoff. Linux CI passed 448/448 tests; Windows CRLF CI passed 447/448 with one skip and zero failures on development baseline `bec62ca`. Fresh OpenCode, independent unfamiliar-user testing, native multi-agent execution and real-media QA remain unverified. See the [V2.7 acceptance matrix](docs/ROADMAP.md#v27--comprehensive-end-to-end-acceptance).
+**V2.7 release evidence:** Owner-operated Windows Codex completed a 30-second planning workflow with saved project recovery, scoped revision and approval-safe handoff. Linux CI passed 448/448 tests; Windows CRLF CI passed 447/448 with one skip and zero failures on development baseline `bec62ca`. Fresh OpenCode, independent unfamiliar-user testing, native multi-agent execution and real-media QA remain unverified. See the [V2.7 acceptance matrix](docs/ROADMAP.md#v27--comprehensive-end-to-end-acceptance).
 
 ## 📊 Quality and validation
 
@@ -189,7 +189,7 @@ The owner has accepted focused text-only checkpoint recovery, scoped revision, c
 
 ## 🏷️ Releases and roadmap
 
-> **[V2.6.0 released on 2026-11-15](https://github.com/universal-ai-film/universal-ai-film-director/releases/tag/v2.6.0):** Reusable 15-second and documentary planning starters, portable Project Bible/handoff/snapshot contracts, community showcase metadata and expanded schema/isolated-skill tests are available. This is a software/planning release: independent unfamiliar-user onboarding is **NOT_RUN**; universal host compatibility, live Studio integration and actual media quality remain **NOT_VERIFIED**. Repeated real-world testing is planned for V2.7. Production and paid provider operations still require separate approval.
+> **[V2.7.0 released on 2026-11-22](https://github.com/universal-ai-film/universal-ai-film-director/releases/tag/v2.7.0):** Reliability, Windows portability, approval and permission integrity, explicit rights reporting and owner-operated functional planning acceptance. Final CI passed; exact-candidate installation smoke accepted as an exception. Independent unfamiliar-user testing, fresh OpenCode acceptance and real-media quality remain unverified. Production and paid provider operations require separate approval.
 
 
 | Version | Status | Focus |
@@ -201,11 +201,12 @@ The owner has accepted focused text-only checkpoint recovery, scoped revision, c
 | [v2.3.0](https://github.com/universal-ai-film/universal-ai-film-director/releases/tag/v2.3.0) | Released 2026-11-14 (limited) | Beginner onboarding and Director first-turn improvements, deterministic planning regressions; >=5 unfamiliar-user tests NOT_RUN under limited-release exception |
 | [v2.4.0](https://github.com/universal-ai-film/universal-ai-film-director/releases/tag/v2.4.0) | Previous stable; owner-confirmed released 2026-11-15 (limited) | Character & World Memory, scoped Smart Film Repair planning, byte-integrity checks and portable runtimes; real-media quality and independent end-to-end acceptance NOT_VERIFIED |
 | [v2.5.0](https://github.com/universal-ai-film/universal-ai-film-director/releases/tag/v2.5.0) | Previous stable; released 2026-11-15 | Intelligent Budget Director, mock production jobs, metadata/export QA, recovery bundles and deterministic five-shot acceptance; independent agent-host and actual media inspection NOT_VERIFIED |
-| [v2.6.0](https://github.com/universal-ai-film/universal-ai-film-director/releases/tag/v2.6.0) | **Latest stable; released 2026-11-15** | Maintained planning templates, portable versioned contracts, community showcase metadata and expanded deterministic tests; independent onboarding NOT_RUN, Studio integration and real-media quality NOT_VERIFIED |\n| **v2.7.0** | Proposed next milestone | Repeated independent-user and multi-agent end-to-end workflow, failure/recovery and separate media-quality validation |
+| [v2.6.0](https://github.com/universal-ai-film/universal-ai-film-director/releases/tag/v2.6.0) | Previous stable; released 2026-11-15 | Maintained planning templates, portable versioned contracts, community showcase metadata and expanded deterministic tests; independent onboarding NOT_RUN, Studio integration and real-media quality NOT_VERIFIED |
+| [v2.7.0](https://github.com/universal-ai-film/universal-ai-film-director/releases/tag/v2.7.0) | **Latest stable; released 2026-11-22** | Reliability, cross-platform regression and owner-operated planning acceptance; independent and real-media gaps disclosed |
 | **V3.0–V3.4 (proposed)** | Feasibility-gated research on `develop` | Shared production engine, then live-action pre-production (V3.1), on-set assistance (V3.2), post-production (V3.3) and independent full-workflow validation (V3.4) |
 | **V4 (future candidate)** | Not scheduled | Unified AI/live-action Visual Film Studio; hybrid production remains a separate research idea |
 
-**Two-mode direction (proposal, not current capability):** AI Filmmaking remains the existing workflow. Future Live-Action Filmmaking assistance would support real crews, actors, cameras and locations while sharing the Director, six specialist skills, Project Bible, approvals, budget and continuity contracts. Physical set safety, consent, permissions and final decisions remain human responsibilities. V2.6 is released with documented limitations; V2.7 is in release preparation with scoped acceptance and disclosed outstanding checks; V3.1–V3.4 require separate implementation and validation approvals.
+**Two-mode direction (proposal, not current capability):** AI Filmmaking remains the existing workflow. Future Live-Action Filmmaking assistance would support real crews, actors, cameras and locations while sharing the Director, six specialist skills, Project Bible, approvals, budget and continuity contracts. Physical set safety, consent, permissions and final decisions remain human responsibilities. V2.7 is released with scoped acceptance and explicitly accepted limitations; V3.0 is the next proposed research milestone; V3.1–V3.4 require separate implementation and validation approvals.
 
 The [canonical roadmap](docs/ROADMAP.md) defines proposed milestones and acceptance gates; it does not authorize release or provider spending. **Production GO remains HOLD.** Published releases remain identifiable by their tags; `main` is the V2.x integration branch, not a guarantee that every commit is a tagged release. See [CHANGELOG](CHANGELOG.md).
 
