@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 'use strict';
 const fs=require('node:fs'),path=require('node:path');
+const {normalizeNewlines}=require('./helpers/normalize-newlines.js');
 const ROOT=path.resolve(__dirname,'..');
 const names=['universal-ai-film-director','film-storytelling','film-visual-direction','film-cinematography','film-video-production','film-sound-direction','film-continuity-qa'];
 function list(dir,base=dir){
@@ -18,7 +19,7 @@ function validate(root=ROOT){
  for(const name of names){
   const dir=path.join(root,'skills',name),p=path.join(dir,'SKILL.md');
   if(!fs.existsSync(p)){errors.push('Missing skill: '+name);continue;}
-  const s=fs.readFileSync(p,'utf8');
+  const s=normalizeNewlines(fs.readFileSync(p,'utf8'));
   const match=s.match(/^---\n([\s\S]*?)\n---\n/);
   if(!match||!new RegExp('^name:\\s*'+name+'\\s*$','m').test(match[1])||!/^description:\s*.+$/m.test(match?.[1]||''))errors.push('Invalid skill frontmatter: '+name);
   if(!fs.existsSync(path.join(dir,'references/guide.md')))errors.push('Missing guide: '+name);

@@ -1,8 +1,9 @@
 'use strict';
 const test=require('node:test'),assert=require('node:assert/strict');
 const fs=require('node:fs'),path=require('node:path');
+const {normalizeNewlines}=require('../helpers/normalize-newlines.js');
 const root=path.resolve(__dirname,'../..'),read=p=>fs.readFileSync(path.join(root,p),'utf8');
-const skill=read('skills/universal-ai-film-director/SKILL.md');
+const skill=normalizeNewlines(read('skills/universal-ai-film-director/SKILL.md'));
 const craft=read('skills/universal-ai-film-director/references/creative-direction.md');
 const discovery=read('skills/universal-ai-film-director/references/discovery.md');
 const decisions=read('skills/universal-ai-film-director/references/decision-procedure.md');

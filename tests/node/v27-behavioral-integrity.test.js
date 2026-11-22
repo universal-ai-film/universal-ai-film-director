@@ -1,8 +1,9 @@
 'use strict';
 // Static instruction checks and deterministic authority checks, not live agent execution.
 const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path');
+const {normalizeNewlines}=require('../helpers/normalize-newlines.js');
 const read=p=>fs.readFileSync(path.join(__dirname,'../../skills',p),'utf8');
-const entry=read('universal-ai-film-director/SKILL.md');
+const entry=normalizeNewlines(read('universal-ai-film-director/SKILL.md'));
 const director=read('universal-ai-film-director/references/project-state.md');
 test('Director mandates reporting and routes to state reference',()=>{
  assert.ok(entry.includes('At production packet, final review and delivery, explicitly report rights and the final authorization summary per [project state](references/project-state.md), including planning-only'));
