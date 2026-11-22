@@ -1,0 +1,28 @@
+name: V3 SQLite feasibility
+on:
+  pull_request:
+    branches: [develop]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  sqlite:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        node: ['22.13.0', '22', '24']
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+      - run: node --test tests/node/v3-sqlite-spike.test.js
+      - run: node --test tests/node/v3-mock-executor.test.js tests/node/v3-mock-checkpoint.test.js
+      - run: node scripts/build-skill-runtimes.js --check
+      - run: node scripts/build-skill-contracts.js --check
+      - run: node tests/package/validate-package.js
