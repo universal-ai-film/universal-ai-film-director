@@ -1,0 +1,23 @@
+{
+  "name": "director-typescript-spike",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "bin": {
+    "director-spike": "dist/cli.js"
+  },
+  "files": [
+    "dist",
+    "legacy"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json && tsc -p tsconfig.cjs.json",
+    "check": "tsc -p tsconfig.json --noEmit",
+    "test": "node --test test.cjs",
+    "pack-test": "node pack-test.cjs"
+  },
+  "devDependencies": {
+    "typescript": "5.8.3",
+    "@types/node": "22.13.10"
+  }
+}
