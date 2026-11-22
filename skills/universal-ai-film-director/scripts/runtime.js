@@ -77,12 +77,44 @@ function validateProject(p) {
  for(const key of ['gate_proposals','approval_ledger','unlock_ledger','permission_ledger'])if(p[key]!==undefined&&!Array.isArray(p[key]))reject('Invalid authority ledger: '+key);
  return true;
 }
+const specialistStages = {
+  "film-storytelling": [
+    "script",
+    "review"
+  ],
+  "film-visual-direction": [
+    "visual_bible",
+    "review"
+  ],
+  "film-cinematography": [
+    "storyboard",
+    "generator",
+    "review"
+  ],
+  "film-video-production": [
+    "generator",
+    "generate",
+    "review",
+    "delivery"
+  ],
+  "film-sound-direction": [
+    "sound",
+    "review",
+    "delivery"
+  ],
+  "film-continuity-qa": [
+    "sound",
+    "review",
+    "delivery"
+  ]
+};
 const stages = new Set(['script','visual_bible','storyboard','sound','generator','generate','review','delivery']);
 const permissions = new Set(['script_user_approval','visual_bible_user_approval','storyboard_user_approval','scoped_unlock','provider_job_permission','publication_permission']);
 const handoffKeys = new Set(['contract_version','project_id','request_id','origin','stage','input_revision','status','proposed_artifact','provenance','required_authorization','dependencies','assumptions']);
 function validOptionalStrings(values) {return values===undefined||(Array.isArray(values)&&values.every(nonempty)&&new Set(values).size===values.length);}
 function validateHandoffShape(q) {
  if(!stages.has(q.stage))reject('Invalid specialist stage');
+ if(!Object.prototype.hasOwnProperty.call(specialistStages,q.origin)||!specialistStages[q.origin].includes(q.stage))reject('Incompatible specialist stage');
  if(Object.keys(q).some(k=>!handoffKeys.has(k)))reject('Unknown specialist proposal field');
  if(!Object.prototype.hasOwnProperty.call(q.provenance,'evidence_ref')||
    !(q.provenance.evidence_ref===null||typeof q.provenance.evidence_ref==='string'))
@@ -131,10 +163,40 @@ function evidenceOfUser(e) {
  if(!e||e.actor!=='USER'||!ok(e.source_ref)||!ok(e.quote))fail('Explicit USER evidence with source_ref and quote required');
  return clone({actor:'USER',source_ref:e.source_ref,quote:e.quote});
 }
-function scopeIsApproval(e) {
- const q=e.quote.trim();
- return /^(?:yes|yes[,. ]+i approve|approved|approve|i approve(?:\s|$)|i confirm(?:\s|$)|confirmed)$/i.test(q)
-  || /\b(?:i approve|i confirm|approved by me)\b/i.test(q);
+// Deliberately bounded statement grammar, not natural-language understanding.
+// Unknown wording must be clarified; never accept a matching keyword in a sentence.
+const cleanStatement = q => q.trim().replace(/[.!]$/, '').trim().replace(/\s+/g,' ');
+const statement = q => cleanStatement(q).toLowerCase();
+const unsafeClause = q => /\b(?:no|not|never|nothing|if|unless|until|after|before|once|maybe|perhaps|instead|except|but|and|or|all)\b|[?;]|[‘’"]|\b(?:don\'t|can\'t|won\'t)\b/i.test(q);
+const escapeRE = s => s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+const gateAliases={script:'(?:screenplay|script)',visual_bible:'visual[ _-]bible',storyboard:'storyboard'};
+function scopeIsApproval(e,proposal,pendingCount) {
+ const text=statement(e.quote);
+ if(unsafeClause(text))return false;
+ const match=/^(?:yes[,. ]+)?(?:i approve|i confirm|approved by me|approved|approve|confirmed)(?: (.+))?$/.exec(text);
+ if(!match)return text==='yes'&&pendingCount===1;
+ if(!match[1])return pendingCount===1;
+ const target=match[1].replace(/^the /,'');
+ // Exact proposal version, or a gate alias optionally followed by its version suffix.
+ const version=statement(proposal.version);
+ const suffix=version.match(/(?:^|[-_ ])(v\d+(?:\.\d+)*)$/)?.[1];
+ return target===version || new RegExp('^'+gateAliases[proposal.gate]+(suffix?'(?:[-_ ]'+escapeRE(suffix)+')?':'')+'$').test(target);
+}
+function scopeIsUnlock(e,shotId) {
+ const match=/^(?:(?:i )?(?:allow|authorize|authorise) (?:the )?)?(?:unlock|revise|replace|change|repair|modify)(?: of)? ([a-z0-9_-]+)(?: only)?$/i.exec(cleanStatement(e.quote));
+ return !!match&&match[1]===shotId;
+}
+function scopeIsPermission(e,permission,scope) {
+ if(unsafeClause(e.quote)||unsafeClause(scope))return false;
+ const match=/^(?:(?:i )?(?:authorize|authorise|allow|approve)|go ahead with|you may) (.+)$/i.exec(cleanStatement(e.quote));
+ if(!match)return false;
+ const actions={production_go:'(?:production[ _-]go|production)',provider_job:'(?:video generation|generation|provider[ _-]job)',publication:'(?:publication|publishing|publish)'};
+ const action=actions[permission],target=cleanStatement(scope);
+ // An unqualified action only covers that same action scope. A narrower scope
+ // must appear exactly after "of" or "for"; preserve identifier case as well.
+ const purpose=new RegExp('^'+action+'(?: (?:of|for) (.+))?$','i').exec(match[1]);
+ if(!purpose)return false;
+ return purpose[1]!==undefined ? purpose[1]===target : new RegExp('^'+action+'$','i').test(target);
 }
 function proposeGate(p,{expected_revision,gate,version,artifact_ref,proposal_id}) {
  checkRevision(p,expected_revision);
@@ -152,10 +214,10 @@ function approveGate(p,{expected_revision,proposal_id,evidence}) {
  const q=getLedger(p,'gate_proposals').find(x=>x.proposal_id===proposal_id&&x.status==='PENDING');
  if(!q)fail('No exact pending proposal to approve');
  const e=evidenceOfUser(evidence);
- if(!scopeIsApproval(e))fail('Ambiguous user reply; explicit approval needed');
  // A bare yes is only meaningful if exactly one item is pending overall.
  if(/^yes[.!]?$/i.test(e.quote.trim())&&getLedger(p,'gate_proposals').filter(x=>x.status==='PENDING').length!==1)
   fail('Ambiguous yes with multiple pending gates');
+ if(!scopeIsApproval(e,q,getLedger(p,'gate_proposals').filter(x=>x.status==='PENDING').length))fail('Ambiguous user reply; explicit approval needed');
  const order=['script','visual_bible','storyboard'];
  const index=order.indexOf(q.gate);
  if(index>0 && !p.gates[order[index-1]].approved)fail('Earlier user approval gate is missing');
@@ -174,7 +236,7 @@ function proposeLockedShotRevision(p,{expected_revision,shot_id,source_revision,
  if(!source||source.state!=='LOCKED')fail('Only an existing LOCKED shot can be revised through scoped unlock');
  if(p.shots.some(s=>s.id===shot_id&&s.revision===new_revision))fail('New shot revision already exists');
  const e=evidenceOfUser(evidence);
- if(!/\b(?:unlock|revise|replace|change|repair|modify|allow)\b/i.test(e.quote)||!e.quote.includes(shot_id))
+ if(!scopeIsUnlock(e,shot_id))
   fail('Scoped user authorization must explicitly identify affected shot');
  if(getLedger(p,'unlock_ledger').some(x=>x.authorization_ref===authorization_ref))fail('Duplicate authorization reference');
  const n=clone(p);n.unlock_ledger=getLedger(n,'unlock_ledger');
@@ -187,11 +249,11 @@ function recordPermission(p,{expected_revision,permission,scope,grant_id,evidenc
  checkRevision(p,expected_revision);
  if(!permissionKinds.has(permission)||!ok(scope)||!ok(grant_id))fail('Permission kind, scope and grant ID required');
  const e=evidenceOfUser(evidence);
- if(!/\b(?:authorize|authorise|permission|allow|approve|go ahead|you may)\b/i.test(e.quote))
+ if(!scopeIsPermission(e,permission,scope))
   fail('Explicit permission statement required');
  if(getLedger(p,'permission_ledger').some(x=>x.grant_id===grant_id))fail('Duplicate permission grant ID');
  const n=clone(p);n.permission_ledger=getLedger(n,'permission_ledger');
- n.permission_ledger.push({grant_id,permission,scope,evidence,status:'RECORDED_ONLY'});
+ n.permission_ledger.push({grant_id,permission,scope,evidence:e,status:'RECORDED_ONLY'});
  // Intentional: grants document a user's statement. This library never changes
  // operational flags, invokes providers, connects accounts or publishes media.
  n.revision++;return n;

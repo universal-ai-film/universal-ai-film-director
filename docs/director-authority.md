@@ -48,3 +48,68 @@ When all earlier approval and dependency-integrity gates are clear, pending scop
 ## Dependency reference compatibility (V2.2)
 
 Dependency graph nodes retain `{kind,id}` and edges retain `{from,to}`. Use **`kind:id`** in new edge references (for example `shot:SH03`, `audio:CUE03`, `anchor:CHILD-01`). Existing bare-ID edges remain readable only when exactly one node has that ID. Ambiguous bare references fail closed; do not guess the kind. Checkpoint revision-impact neighbors are returned in canonical form. Directed edges continue to describe downstream repair impact in the audio planner; checkpoint recovery reports directly adjacent nodes in both directions for conservative human review. This is a compatibility rule, not an approval or automatic asset invalidation.
+
+## V2.7 authority and handoff integrity (F06–F09)
+
+Authority helpers accept a bounded, full-statement grammar. Approval keywords inside
+negative, conditional, quoted or unrelated statements do not establish approval.
+Named gate approvals must match the pending gate and, when supplied, its exact
+version. Screenplay/script and Visual Bible spelling aliases remain supported.
+Generic replies (`yes`, `I approve`, `approved`, `I confirm`) require exactly one
+pending gate proposal. Unknown wording requires clarification; these checks are
+neither complete natural-language understanding nor authentication of USER identity.
+
+Scoped unlock requires a complete shot identifier in a direct instruction such as
+`Unlock SHOT-01` or `I allow repair of S01_SH08 only`. It preserves the locked source,
+its asset and parent lineage, adding only a PROPOSED candidate. Multiple targets,
+substring IDs, negative statements and conditional instructions are refused.
+Permission records must match both the permission purpose and scope. For example,
+`I authorize video generation of S01_SH01 only` records a provider-job intention
+for scope `S01_SH01 only`; `I authorize publication` records publication scope
+`publication`. A narrower scope must appear explicitly after `of` or `for`; an
+unqualified statement cannot silently authorize a caller-selected shot. Evidence is
+copied into the ledger. All three operational flags remain false.
+
+### Audited specialist output responsibilities
+
+`stage` describes the proposed output responsibility, not whichever phase the
+project currently occupies. A review of an earlier artifact is a `review` handoff;
+it does not make QA the author of a `script` proposal. All handoffs remain PROPOSED.
+
+| Specialist | Allowed stages | Audited responsibility |
+| --- | --- | --- |
+| film-storytelling | script, review | Screenplay, dialogue/narration and narrative quality review |
+| film-visual-direction | visual_bible, review | Visual Bible, identity anchors and visual consistency review |
+| film-cinematography | storyboard, generator, review | Timed shot design, generator-friendly visual plans and camera/timing review |
+| film-video-production | generator, generate, review, delivery | Generator packets, generation job planning/evidence, export QA and delivery metadata |
+| film-sound-direction | sound, review, delivery | Cue sheets, dubbing/repairs, sync review and final audio/export checks |
+| film-continuity-qa | sound, review, delivery | Audio repair proposals, continuity/repair review and full export evidence review |
+
+Audit sources: all six specialist `SKILL.md` files and their
+`references/worked-example.md`; cinematography's shot-plan guidance; sound's
+`references/audio-direction.md`; QA's `references/postproduction.md`; video
+production's export-QA guidance; `docs/architecture.md`; canonical handoff and
+Project Bible schemas; existing contract, orchestration and schema-validation
+fixtures. No existing fixture used an incompatible specialist/stage pair. The old
+orchestration fixture's generic sentence `I approve this synthetic test proposal`
+was replaced with supported `I approve`; it still approves its sole pending gate.
+Runtime and JSON Schema enforce the same matrix; tests cover all 48 pairs and all
+seven installed runtimes. A new responsibility outside this table requires an
+explicit contract review, rather than accepting any allowed stage independently.
+
+### Regression evidence and limits
+
+On Linux with Node.js 24.22.3, the 17 synthetic helper cases derived from the
+owner's Windows observations reproduced the previous 9 PASS / 8 FAIL result
+against main `56dd9c6d70b19266beb5f78488f8566ad9fca924`. The corrected helpers pass
+all 17. The complete suite passes 426/426, including 121 new regression tests for
+authority scope, immutable assets, ledger isolation, stage compatibility and
+installed-runtime behavior. Schema-instance validation additionally exercises all
+48 pairs directly and through Project Bible references.
+
+These are deterministic local regressions, not a new Windows or live-agent run.
+They do not verify specialist agent independence, persistent Project Bible storage,
+actual media inspection or provider execution. Earlier Phase 3 deferred items stay
+deferred. F10 is unchanged: downstream propagation belongs to `previewRepairImpact`,
+while checkpoint inspection deliberately reports adjacent dependencies. V2.7 stays
+HOLD pending the remaining roadmap and explicit owner release approval.
