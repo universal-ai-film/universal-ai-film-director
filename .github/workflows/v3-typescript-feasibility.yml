@@ -1,0 +1,40 @@
+name: V3 TypeScript feasibility
+on:
+  pull_request:
+    branches: [develop]
+permissions:
+  contents: read
+jobs:
+  typescript:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        node: ['22.13.0', '22', '24']
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: research/v3/typescript-spike
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+      - run: npm install --ignore-scripts --no-audit --no-fund
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - run: node --version
+      - run: npm exec -- tsc --version
+      - run: npm run check
+      - run: npm run build
+      - run: node prepare.cjs
+      - run: npm test
+      - run: npm run pack-test
+      - run: node scripts/build-skill-runtimes.js --check
+        working-directory: .
+      - run: node scripts/build-skill-contracts.js --check
+        working-directory: .
+      - run: node tests/package/validate-package.js
+        working-directory: .
