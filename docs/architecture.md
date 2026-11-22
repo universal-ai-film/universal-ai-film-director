@@ -83,7 +83,7 @@ Owner approved the following direction on 2026-11-22 after Phase 0 and Phase 1 d
 |---|---|---|
 | 001 | Local-first modular monolith | Accepted |
 | 002 | Hexagonal boundaries and pragmatic DDD | Accepted |
-| 003 | JavaScript/CommonJS initially | Accepted |
+| 003 | Strict TypeScript, compiled ESM for optional V3 runtime; existing V2 CommonJS unchanged | Accepted — scoped |
 | 004 | Optional runtime: tested minimum 22.13.0 on Node 22; tested Node 24 line | Accepted — scoped |
 | 005 | Built-in SQLite for local persistence; in-memory test repository | Accepted — scoped |
 | 006 | Versioned JSON interchange and checkpoints | Accepted |
@@ -138,3 +138,7 @@ Specialists propose, the creator authorizes, the runtime enforces, adapters exec
 Validate V2 Project Bible 2.0, handoff 2.0, snapshot 1.0, checkpoint and recovery envelope 1 at their respective boundaries. Preserve original files and preview migration before confirmation; use schema and domain checks. Import historical approvals with their trust classification, preserve locks and mock records without claiming byte verification; recorded-only permissions never become execution grants. Markdown extraction is a proposal requiring human confirmation. Reject unknown versions safely. V3-to-V2 export is a planning projection with all operational flags false and explicit omissions; lossless downgrade is not promised. Studio remains unchanged.
 
 Phase 1C selects built-in SQLite for local persistence development; JSON remains interchange and memory supports unit tests. Node 22.13.0 is the tested minimum on the 22 line, not a recommendation to install an old patch. Prefer current patched supported releases on tested 22/24 lines; no blanket claim for other versions. Node 22 emitted experimental SQLite warnings. Existing skill requirements remain unchanged. Production durability, host invocation and ADR-011 human authority are not established. See [roadmap](ROADMAP.md) and [research evidence](../research/v3/README.md#phase-1c-feasibility-closure).
+
+### Phase 1F language decision and research governance
+
+Prefer strict TypeScript with NodeNext ESM and standard tsc output targeting ES2022 for the isolated optional runtime. CommonJS is a tested comparison, not a second distribution target. Keep the existing skills and research unchanged. Experimental code belongs on dedicated research branches; merge findings and maintainable product code/tests only, unless ongoing regression value justifies retaining an experiment. See [Phase 1E evidence](../research/v3/README.md#phase-1e-typescript-feasibility). Production must commit a dependency lockfile, validate reproducible builds and installed launchers on supported operating systems, and retain existing regression gates. ADR-011 remains gated.
