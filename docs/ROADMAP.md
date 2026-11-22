@@ -2,7 +2,7 @@
 
 **Canonical roadmap · updated 2026-11-15.** This is the single source of truth for version outcomes and acceptance gates. [Development governance](DEVELOPMENT.md) defines the main/develop PR workflow. Historical V2.0 release evidence remains in [the release checklist](archive/releases/v2.0.0-checklist.md) and Git history.
 
-> **Current state:** [v2.6.0](https://github.com/universal-ai-film/universal-ai-film-director/releases/tag/v2.6.0) was published as the latest stable software release on 2026-11-15 at commit `7c455692dc564894bf2cb6e951b8909e8b753acb` (GitHub release and tag verified). Seven skills, maintained planning starters, portable contracts and deterministic validation are shipped. Independent unfamiliar-user onboarding remains **NOT_RUN**; universal agent-host compatibility, live Studio integration and real-media quality remain **NOT_VERIFIED**. V2.7 is the proposed extensive real-world testing milestone. **The Last Light Production GO remains HOLD**; software publication does not authorize provider spending, media generation or film publication.
+> **Current state:** [v2.6.0](https://github.com/universal-ai-film/universal-ai-film-director/releases/tag/v2.6.0) was published as the latest stable software release on 2026-11-15 at commit `7c455692dc564894bf2cb6e951b8909e8b753acb` (GitHub release and tag verified). Seven skills, maintained planning starters, portable contracts and deterministic validation are shipped. Independent unfamiliar-user onboarding remains **NOT_RUN**; universal agent-host compatibility, live Studio integration and real-media quality remain **NOT_VERIFIED**. V2.7 is in release preparation after scoped owner-operated functional acceptance; independent and real-media evidence remains outstanding. **The Last Light Production GO remains HOLD**; software publication does not authorize provider spending, media generation or film publication.
 
 ## Release direction — master roadmap
 
@@ -18,7 +18,7 @@ This is the **authoritative release table** for Director. Historical releases ar
 | [V2.4.0](https://github.com/universal-ai-film/universal-ai-film-director/releases/tag/v2.4.0) | 2026-11-15 | Character & World Memory and Smart Film Repair | Shared continuity/revision concepts | **RELEASED — limited** | Deterministic checks; real-media repair quality not verified |
 | [V2.5.0](https://github.com/universal-ai-film/universal-ai-film-director/releases/tag/v2.5.0) | 2026-11-15 | Intelligent Budget Director, manual/local/mock production, media QA and recovery | Future E4/E5 foundations | **RELEASED — limited** | CI evidence; real-media/independent host acceptance pending |
 | [V2.6.0](https://github.com/universal-ai-film/universal-ai-film-director/releases/tag/v2.6.0) | 2026-11-15 | Planning templates, community readiness, portable Studio-facing contracts | **E1 foundation** for Studio S2 | **RELEASED** | Contract/schema/installation checks; Studio integration not yet verified |
-| **V2.7.0** | **Next: testing milestone; date TBD** | **Comprehensive validation of everything released in V2.0–V2.6:** seven-skill workflow, portability, approvals, budget, continuity, repair, checkpoints, QA and final delivery | **E1 compatibility evidence** alongside Studio S0/S2; no dependency on Studio app completion | **PLANNED — acceptance first** | T1–T8 evidence matrix, independent host/user runs, zero unauthorized spend; real-media outcomes separately PASS/BLOCKED/NOT_RUN |
+| **V2.7.0** | **Next: release preparation; date TBD** | **Comprehensive validation of everything released in V2.0–V2.6:** seven-skill workflow, portability, approvals, budget, continuity, repair, checkpoints, QA and final delivery | **E1 compatibility evidence** alongside Studio S0/S2; no dependency on Studio app completion | **RELEASE PREPARATION — HOLD** | T1–T8 evidence matrix, independent host/user runs, zero unauthorized spend; real-media outcomes separately PASS/BLOCKED/NOT_RUN |
 | **V3.0** | After V2.7 review; date TBD | Shared provider-neutral production engine, Persistent Director, mode-aware Project Bible, jobs, provenance, resumability and safe local/manual/mock adapters | **E2 portable package research; E3 handoff; E4 job contract** | **PROPOSED — feasibility-gated** | Typed contracts, negative/security tests, recovery, cost/permission safety and explicit implementation/release approval |
 | **V3.1** | After V3.0; date TBD | **Live-action pre-production:** shooting scripts, casting/location requirements, shot lists, equipment, schedules and call sheets | Mode-aware schemas; Studio remains optional | **PROPOSED — feasibility-gated** | Human-reviewed real pre-production scenario, consent/rights constraints |
 | **V3.2** | After V3.1; date TBD | **Live-action on-set assistance:** offline take logs, coverage, camera setups, continuity and daily records | Optional future Studio production views | **PROPOSED — feasibility-gated** | Human-confirmed offline workflows, safety boundaries, recovery |
@@ -56,6 +56,34 @@ This is the **authoritative release table** for Director. Historical releases ar
 | **T8 — Regression/security** | Schema and packaging, permission boundaries, secrets, dependency/rights review, release candidate | Exact-SHA applicable checks and unresolved issues documented |
 
 **Evidence matrix:** report PASS / FAIL / GAP / BLOCKED / NOT_RUN / NOT_VERIFIED per track. Owner-operated or deterministic tests are not independent agent runs; a film plan is not a rendered film; byte integrity is not visual quality. V2.7 can only claim what its evidence establishes. Any release, provider operation, media publication or *The Last Light* Production GO requires separate approval; its existing HOLD remains unchanged.
+
+### V2.7 release preparation — 2026-11-22
+
+Development and owner-operated Phase 4 functional acceptance are complete with documented limitations; publication remains HOLD. Stable release remains V2.6.0.
+
+- [#279](https://github.com/universal-ai-film/universal-ai-film-director/pull/279): F01 strict acceptance completeness; F02 evidence revision/environment attribution.
+- [#281](https://github.com/universal-ai-film/universal-ai-film-director/pull/281): F03 dynamic runtime inventory and portable paths; F04 required references; F05 repository/report identity.
+- [#283](https://github.com/universal-ai-film/universal-ai-film-director/pull/283): F06 exact approval, F07 scoped locked-shot authorization, F08 permission evidence, F09 specialist-stage compatibility. All 17 owner-operated Windows regression scenarios passed after remediation (eight failures reproduced before fixes).
+- F10: investigated, non-defect; transitive impact preview and direct checkpoint dependency inspection serve different purposes.
+- [#285](https://github.com/universal-ai-film/universal-ai-film-director/pull/285): F11 explicit asset-rights status and F12 final authorization summary; observed in owner-operated planning acceptance.
+- [#287](https://github.com/universal-ai-film/universal-ai-film-director/pull/287): F13 CRLF frontmatter/length handling, LF runtime/schema identity and explicit Windows checkout CI.
+
+Verified development baseline `bec62ca36a992564fc1c4d45a9c6aaccd20ad809`: [Validate skill](https://github.com/universal-ai-film/universal-ai-film-director/actions/runs/45013645011) job logs report Linux 448/448 passed, Windows CRLF 447 passed / 1 skipped / 0 failed (448 tests each). Both jobs passed protected files, structure, seven runtime identity checks, schema copies and isolated packaging; Linux also passed schema-instance validation, deterministic fixtures and marketplace ZIP build/integrity/upload. [Secret scan](https://github.com/universal-ai-film/universal-ai-film-director/actions/runs/45013644953) and [private pre-production](https://github.com/universal-ai-film/universal-ai-film-director/actions/runs/45013644952) succeeded. These are observed PR-triggered runs, not independently confirmed post-merge push runs. Final candidate CodeQL, installation smoke and applicable CI must be verified separately.
+
+Owner-operated **A Little Hope** (30 seconds, four shots, five audio cues): approved planning handoffs, saved Project Bible and Production Packet, scoped SH-02 dialogue revision with prior approval preserved, stale V1 approval not applied to active V2, checkpoint 7 recovery and local audio impact preview preserving synthetic locked SH-01. Rights/provenance and performer consent explicitly unverified; no rendered media or actual locked media inspection. Budget EUR 0; production remains HOLD. Observations accepted for Phase 4: OBS-01 synthetic lock reporting consistency, OBS-02 checkpoint numbering after metadata edits, OBS-03 incidental formatting changes during preview; recommended for V3 state-management follow-up, not claimed fixed.
+
+| Track | Result and boundary |
+| --- | --- |
+| T1 Install/portability | Scoped PASS: owner Windows Codex and cross-platform CI; fresh OpenCode and other hosts deferred |
+| T2 Orchestration | Owner-operated planning PASS; not independent multi-agent execution |
+| T3 Integrity/recovery | Scoped PASS: revision, stale approval, checkpoint and synthetic lock evidence |
+| T4 Budget/permissions | Planning PASS; no provider execution or spending |
+| T5 Continuity/repair | Planning PASS; synthetic metadata, not actual media repair |
+| T6 Real-media QA | NOT_RUN for fresh V2.7 acceptance |
+| T7 Independent usability | NOT_RUN; target five unfamiliar creators remains unmet |
+| T8 Regression/security | Partial verification: above baseline green; final candidate checks outstanding |
+
+Release preparation GO only; publication NO-GO until final candidate checks and explicit owner acceptance of remaining limitations and release authorization. No live Studio integration, universal host compatibility, actual media quality or marketplace acceptance is established. The Last Light Production GO remains HOLD.
 
 ## V3.0–V3.4 — Shared production engine and live-action filmmaking
 
@@ -311,7 +339,7 @@ Historical phase mapping: architecture and planning tests → V2.0 baseline; fiv
 3. **No simulated evidence:** distinguish implementation, CI checks, independent host runs, human-reviewed footage, external-user trials and authorization. Record exact PR/commit and relevant logs for milestone closure.
 4. **Separate approvals:** PR merge, software release, creative decisions, provider access, paid execution and film publication are different gates. **Production GO remains HOLD**.
 5. **Release gate:** only create a tag or GitHub release after exact-SHA validation, applicable security/rights review and separate owner authorization. No permanent release branch required.
-6. **Next practical step (current):** execute V2.7 comprehensive testing against released V2.6 and reconcile deferred V2.3–V2.6 independent-user, cross-host and real-media evidence; Studio S0 proceeds independently. V3.0–V3.4 remain proposals, not implementation GO.
+6. **Next practical step (current):** complete V2.7 final candidate checks and obtain explicit release authorization; retain deferred independent-user, cross-host and real-media evidence; Studio S0 proceeds independently. V3.0–V3.4 remain proposals, not implementation GO.
 
 
 ## Two-year product roadmap — November 2026 to November 2028
