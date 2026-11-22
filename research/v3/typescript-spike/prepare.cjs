@@ -1,0 +1,1 @@
+const fs=require('node:fs');fs.mkdirSync('legacy',{recursive:true});fs.copyFileSync('../sqlite-spike.js','legacy/sqlite-spike.cjs');fs.writeFileSync('dist-cjs/package.json','{"type":"commonjs"}');
