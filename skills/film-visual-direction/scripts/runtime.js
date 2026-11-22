@@ -77,12 +77,44 @@ function validateProject(p) {
  for(const key of ['gate_proposals','approval_ledger','unlock_ledger','permission_ledger'])if(p[key]!==undefined&&!Array.isArray(p[key]))reject('Invalid authority ledger: '+key);
  return true;
 }
+const specialistStages = {
+  "film-storytelling": [
+    "script",
+    "review"
+  ],
+  "film-visual-direction": [
+    "visual_bible",
+    "review"
+  ],
+  "film-cinematography": [
+    "storyboard",
+    "generator",
+    "review"
+  ],
+  "film-video-production": [
+    "generator",
+    "generate",
+    "review",
+    "delivery"
+  ],
+  "film-sound-direction": [
+    "sound",
+    "review",
+    "delivery"
+  ],
+  "film-continuity-qa": [
+    "sound",
+    "review",
+    "delivery"
+  ]
+};
 const stages = new Set(['script','visual_bible','storyboard','sound','generator','generate','review','delivery']);
 const permissions = new Set(['script_user_approval','visual_bible_user_approval','storyboard_user_approval','scoped_unlock','provider_job_permission','publication_permission']);
 const handoffKeys = new Set(['contract_version','project_id','request_id','origin','stage','input_revision','status','proposed_artifact','provenance','required_authorization','dependencies','assumptions']);
 function validOptionalStrings(values) {return values===undefined||(Array.isArray(values)&&values.every(nonempty)&&new Set(values).size===values.length);}
 function validateHandoffShape(q) {
  if(!stages.has(q.stage))reject('Invalid specialist stage');
+ if(!Object.prototype.hasOwnProperty.call(specialistStages,q.origin)||!specialistStages[q.origin].includes(q.stage))reject('Incompatible specialist stage');
  if(Object.keys(q).some(k=>!handoffKeys.has(k)))reject('Unknown specialist proposal field');
  if(!Object.prototype.hasOwnProperty.call(q.provenance,'evidence_ref')||
    !(q.provenance.evidence_ref===null||typeof q.provenance.evidence_ref==='string'))
