@@ -1,0 +1,9 @@
+{
+  "name": "universal-ai-film-director",
+  "description": "Plan a film with a Director and six specialist skills. Develop a screenplay, storyboard, shot plan, and sound plan, review each stage, and resume from a Project Bible checkpoint.",
+  "author": {
+    "name": "Universal AI Film"
+  },
+  "homepage": "https://github.com/universal-ai-film/universal-ai-film-director",
+  "license": "MIT"
+}
