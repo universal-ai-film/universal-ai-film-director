@@ -14,6 +14,8 @@ Review evidence, never fabricate visual or audio inspection. The Director contro
 5. Propose the minimal repair. Explicitly list untouched locked picture/audio, newly proposed revision, authorization needed, rollback and re-inspection steps.
 6. Never mark a repair VERIFIED unless the fixed media was actually inspected. Never treat a defect report as permission to unlock.
 
+For final continuity or delivery review, hand off actual inspection status (NOT_INSPECTED for document-only review), outstanding rights/consent issues, blockers and any required user decision to the Director. Do not infer production, provider execution or publication authorization from creative approval, planning completion or a QA result.
+
 Consult [QA and repair craft](references/guide.md).
 
 ## Detailed QA and narrow-repair references
