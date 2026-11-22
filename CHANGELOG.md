@@ -6,12 +6,14 @@ tags, not by duplicated skill source folders.
 
 ## [Unreleased]
 
-### V2.7.0 — release preparation (not published)
+## [2.7.0] — 2026-11-22
+
+Stable software/planning release: [v2.7.0](https://github.com/universal-ai-film/universal-ai-film-director/releases/tag/v2.7.0). Owner approved publication with documented limitations, including the exact-candidate installation smoke exception. Published 2026-11-22 per owner confirmation; tag verified at `88c62da73aa0cc6552d2b0bf6b55b41fd57a69e0`. [Final validation](https://github.com/universal-ai-film/universal-ai-film-director/actions/runs/45018268779), [secret scan](https://github.com/universal-ai-film/universal-ai-film-director/actions/runs/45018268974) and [pre-production](https://github.com/universal-ai-film/universal-ai-film-director/actions/runs/45018268818) passed. CodeQL passed on the file-identical preparation PR head.
 
 - Addressed F01–F09 and F11–F13 across five remediation PRs; F10 classified as a non-defect. Strengthened acceptance evidence, portable validation, approval and permission integrity, specialist handoffs, rights disclosure and Windows CRLF support.
 - Development baseline `bec62ca36a992564fc1c4d45a9c6aaccd20ad809`: Linux 448 passed; Windows 447 passed, one skipped; zero failures. [CI evidence](https://github.com/universal-ai-film/universal-ai-film-director/actions/runs/45013645011).
 - Owner accepted Phase 4 planning evidence and observations. Fresh OpenCode, independent unfamiliar-user acceptance, native independent delegation and real-media QA remain deferred/unverified. See [canonical acceptance matrix](docs/ROADMAP.md#v27--comprehensive-end-to-end-acceptance) for remediation links, scope and limitations.
-- Release HOLD pending exact-candidate checks and separate owner authorization. V2.6.0 remains published stable.
+- Release status: PUBLISHED with disclosed limitations. Independent unfamiliar-user testing and real-media QA remain NOT_RUN; no production authorization implied.
 
 ## [2.6.0] — 2026-11-15
 
