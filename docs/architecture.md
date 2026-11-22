@@ -110,8 +110,8 @@ scripts/                      # existing canonical helpers and builders
 contracts/v3/                 # new state, job, grant, manifest, package schemas
 runtime/
   package.json
-  bin/director.js
-  src/
+  src/cli.ts                 # compiled to dist/cli.js (npm bin)
+  src/                       # future modules below, introduced as needed
     domain/                   # project, creative, continuity, authority,
                               # budget, production, artifacts
     application/              # commands, queries, ports, services
@@ -142,3 +142,5 @@ Phase 1C selects built-in SQLite for local persistence development; JSON remains
 ### Phase 1F language decision and research governance
 
 Prefer strict TypeScript with NodeNext ESM and standard tsc output targeting ES2022 for the isolated optional runtime. CommonJS is a tested comparison, not a second distribution target. Keep the existing skills and research unchanged. Experimental code belongs on dedicated research branches; merge findings and maintainable product code/tests only, unless ongoing regression value justifies retaining an experiment. See [Phase 1E evidence](../research/v3/README.md#phase-1e-typescript-feasibility). Production must commit a dependency lockfile, validate reproducible builds and installed launchers on supported operating systems, and retain existing regression gates. ADR-011 remains gated.
+
+Phase 2A foundation: `runtime/` is a private npm package, built with `npm ci` and `npm run build` in that directory. `npm test`, `npm run test:reproducible` and `npm run test:package` validate the compiled CLI and local archive installation. `director doctor` reports Node/SQLite capability only; persistent projects and Production GO are false. No public npm publication or provider integration is included.
