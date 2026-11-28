@@ -19,7 +19,7 @@ This is the **authoritative release table** for Director. Historical releases ar
 | [V2.5.0](https://github.com/universal-ai-film/universal-ai-film-director/releases/tag/v2.5.0) | 2026-11-15 | Intelligent Budget Director, manual/local/mock production, media QA and recovery | Future E4/E5 foundations | **RELEASED — limited** | CI evidence; real-media/independent host acceptance pending |
 | [V2.6.0](https://github.com/universal-ai-film/universal-ai-film-director/releases/tag/v2.6.0) | 2026-11-15 | Planning templates, community readiness, portable Studio-facing contracts | **E1 foundation** for Studio S2 | **RELEASED** | Contract/schema/installation checks; Studio integration not yet verified |
 | [V2.7.0](https://github.com/universal-ai-film/universal-ai-film-director/releases/tag/v2.7.0) | 2026-11-22 | **Comprehensive validation of everything released in V2.0–V2.6:** seven-skill workflow, portability, approvals, budget, continuity, repair, checkpoints, QA and final delivery | **E1 compatibility evidence** alongside Studio S0/S2; no dependency on Studio app completion | **RELEASED — scoped acceptance** | T1–T8 matrix recorded; owner-operated planning and CI passed; independent and real-media gaps disclosed |
-| **V3.0** | Phase 1F; date TBD | Shared provider-neutral production engine, Persistent Director, mode-aware Project Bible, jobs, provenance, resumability and safe local/manual/mock adapters | **E2 portable package research; E3 handoff; E4 job contract** | **DESIGN APPROVED — feasibility-gated** | Typed contracts, negative/security tests, recovery, cost/permission safety and explicit implementation/release approval |
+| **V3.0** | Phase 1F; date TBD | Shared provider-neutral production engine, Persistent Director, mode-aware Project Bible, jobs, provenance, resumability, safe local/manual/mock adapters and a feasibility-gated provider-independent agent runtime (A0–A6) | **E2 portable package research; E3 handoff; E4 job contract** | **DESIGN APPROVED — feasibility-gated** | Typed contracts, bounded agent execution, tool authorization, recovery, evaluations, cost/permission safety and explicit implementation/release approval |
 | **V3.1** | After V3.0; date TBD | **Live-action pre-production:** shooting scripts, casting/location requirements, shot lists, equipment, schedules and call sheets | Mode-aware schemas; Studio remains optional | **PROPOSED — feasibility-gated** | Human-reviewed real pre-production scenario, consent/rights constraints |
 | **V3.2** | After V3.1; date TBD | **Live-action on-set assistance:** offline take logs, coverage, camera setups, continuity and daily records | Optional future Studio production views | **PROPOSED — feasibility-gated** | Human-confirmed offline workflows, safety boundaries, recovery |
 | **V3.3** | After V3.2; date TBD | **Live-action post-production:** footage organization, edit/sound/caption guidance and export QA | **E5** future Studio timeline and assembly, not a mandatory dependency | **PROPOSED — feasibility-gated** | Rights-cleared footage and real output inspection; no unsupported automated analysis |
@@ -32,7 +32,7 @@ This is the **authoritative release table** for Director. Historical releases ar
 
 | Priority | Workstream | Immediate outcome | Gate |
 | --- | --- | --- | --- |
-| **1** | **V3.0 research on develop** | Feasibility for provider-neutral jobs, Persistent Director, provenance and mode-aware state | Explicit implementation GO after research; no paid execution |
+| **1** | **V3.0 research on develop** | Feasibility for provider-neutral jobs, Persistent Director, provenance, mode-aware state and Agentic AI research A0 | Explicit implementation GO after research; no paid execution |
 | **2** | **Studio S0 and E1** | Review Studio architecture and pin V2.6 read-only schema fixtures for its S2 consumer | Studio owner approval and contract negative tests before integration claim |
 | **3** | **Deferred acceptance and V2.x maintenance** | Independent creators, fresh cross-host runs, actual media QA and V2.7 observations as feasible | Preserve evidence boundaries; separate approval for changes or production |
 | **4** | **V3.1–V3.4** | Live-action pre-production, on-set, post-production and independent full-workflow acceptance | Separate human/rights/safety and real-world evidence |
@@ -100,6 +100,36 @@ Software release GO authorized and publication owner-confirmed with remaining li
 **V4 (future research):** advanced cross-modal continuity, production-aware localized repair, AI/live-action hybrid assets, Studio mode-aware experiences and community extensions. These are hypotheses, not approved features or a guaranteed V4 release.
 
 
+### V3 Agentic AI engineering — cross-cutting research track
+
+Owner-requested roadmap direction (2026-11-28). Research and design only until individual implementation gates are approved. Evolve Director from host-executed skills toward an optional provider-independent agent runtime, without replacing the seven skills, the approved production-engine phases, or V3.1–V3.4 live-action outcomes. Preserve the existing TypeScript/Node/SQLite feasibility evidence and ADRs. A0 compares TypeScript/Node, Java/Spring AI or LangChain4j, Kotlin/JVM and Python; no final agent-runtime language or framework is selected by this roadmap. Any change to existing approved architecture requires a reviewed superseding ADR.
+
+| Research milestone | Scope | Exit evidence |
+| --- | --- | --- |
+| A0 | Audit existing runtime, ADRs, contracts and authority boundaries; define agents vs deterministic workflows and threat model | Reviewed architecture proposal and mapping to existing phases |
+| A1 | Minimal single-agent loop, typed model/tool calls, bounded steps, mock model and provider adapter | Deterministic tests, termination and malformed-output handling |
+| A2 | Supervisor and specialist invocation using existing skills; compare single-agent workflows with multi-agent delegation | Reproducible handoffs, schema validation, measurable benefit before adding agents |
+| A3 | Project Bible as authoritative state, context selection, durable checkpoints, scoped revision and approval | Restart, stale approval, locked asset and transactional recovery tests |
+| A4 | Permissioned tool registry, optional MCP integration, model routing and budget enforcement | Denied-tool, injection, idempotency, cost ceiling and no-spend tests |
+| A5 | Evaluation, tracing, security and failure recovery | Exact-SHA deterministic checks plus separately labeled real-model evidence; redact sensitive traces |
+| A6 | Optional versioned API/CLI and Studio handoff | Legacy seven-skill compatibility and contract tests; Studio integration requires separate approval |
+
+Sequence A0 first; align subsequent milestones with existing V3.0 phases 2–8 rather than creating a competing release schedule. Extend the validated agent capabilities to live-action in V3.1–V3.4 only where useful and safe. Keep deterministic authority, approval, budgets and locks outside model discretion. Start with mock/local execution and the existing A Little Hope scenario; reuse The Last Light only within its existing HOLD. No paid provider calls, media generation, deployment, release or Studio changes authorized. A0 must compare native orchestration and frameworks across the four candidate languages using equivalent bounded mock-agent scenarios, portability, packaging, maintenance, type safety, ecosystem maturity, latency/resource use, cost, and existing skill/contract compatibility. Record actual measurements separately from estimates; choose via reviewed ADR before production dependencies.
+
+**Agentic acceptance gates:** A1–A6 are capability gates, not new releases. Require bounded termination, validated tool inputs/outputs, denied unauthorized actions, prompt-injection resistance, preserved locks and approvals, checkpoint recovery, idempotency, budget ceilings, and reproducible evaluation fixtures. Compare single-agent and multi-agent outcomes before adopting delegation. Report actual model runs separately from mock tests; no autonomous production or universal compatibility claims without evidence. A5 evaluation begins with A1 and continues throughout; A2 may be prototyped early with mocks but production delegation follows authority and state gates.
+
+**Learning track (free reading/course materials; optional API exercises may cost money):** Each implementation PR should explain the concept, design alternatives, relevant reading, a small practical exercise and review questions. Learning does not authorize provider spending or block unrelated maintenance.
+
+| Milestone | Learning topic | Resource |
+| --- | --- | --- |
+| A0 | Agent fundamentals and workflow vs agent design | [Hugging Face Agents Course](https://huggingface.co/learn/agents-course), [Building Effective Agents](https://www.anthropic.com/engineering/building-effective-agents) |
+| A1 | Agent loop, structured output and tool calling | [Microsoft AI Agents for Beginners](https://github.com/microsoft/ai-agents-for-beginners) |
+| A2 | Routing, supervisor and delegation | [Building Effective Agents](https://www.anthropic.com/engineering/building-effective-agents) |
+| A3 | Context, memory and durable state | [LangGraph documentation](https://docs.langchain.com/oss/python/langgraph/overview) (concept reference, not framework selection) |
+| A4 | Tool interoperability and permissions | [MCP documentation](https://modelcontextprotocol.io/) |
+| A5 | Evaluations and threat modeling | [OWASP GenAI Security Project](https://genai.owasp.org/) |
+| A6 | Typed integration and architecture | [Spring AI reference](https://docs.spring.io/spring-ai/reference/), [AI SDK documentation](https://ai-sdk.dev/docs/introduction) (comparison references) |
+
 ### V3.0 Phase 0–1 architecture decision and delivery sequence (2026-11-22)
 
 Owner approved Phase 0 and Phase 1 design recommendations and the 18 ADRs in [architecture](architecture.md#v30-architecture-decisions--phase-1a). Phase 1A and 1B are merged. Phase 1C records scoped Node/SQLite acceptance; execution authority remains feasibility-gated and full implementation remains HOLD pending separate approval. No change to stable V2.7 or Studio.
@@ -111,13 +141,13 @@ Owner approved Phase 0 and Phase 1 design recommendations and the 18 ADRs in [ar
 | 1C | Feasibility closure | [Evidence and limitations](../research/v3/README.md#phase-1c-feasibility-closure); documentation review |
 | 1D–1E | TypeScript research and isolated feasibility | Six matrix jobs passed; experimental PR #298 retained without merge |
 | 1F | Scoped TypeScript/ESM ADR and research governance | Documentation review; production lockfile and launcher gates remain |
-| 2 | Versioned domain contracts and invariants | Schema and negative tests |
-| 3 | Persistent runtime, imports/exports, checkpoints | Transactional state and recovery |
-| 4 | Approvals, locks and read-only previews | Authority and trust-boundary review |
-| 5 | Jobs, attempts, idempotency, reconciliation and budget | No automatic resubmission or unauthorized spending |
-| 6 | Mock, manual and local-file adapters | Provenance and actual inspection distinctions |
-| 7 | Optional runtime integration with seven skills | Legacy packaging and host acceptance |
-| 8 | Migration, cross-platform and end-to-end acceptance | Separate release approval |
+| 2 | Versioned domain contracts and invariants; A1 typed model/tool boundaries after A0 | Schema and negative tests; bounded mock loop spike |
+| 3 | Persistent runtime, imports/exports, checkpoints; A3 authoritative agent state | Transactional state and recovery |
+| 4 | Approvals, locks and read-only previews; A3 approval-safe context and revisions | Authority and trust-boundary review |
+| 5 | Jobs, attempts, idempotency, reconciliation and budget; A4 permissioned tool execution | No automatic resubmission or unauthorized spending |
+| 6 | Mock, manual and local-file adapters; A4 model/tool adapters and optional MCP feasibility | Provenance and actual inspection distinctions |
+| 7 | Optional runtime integration with seven skills; A2 supervisor/delegation, A6 CLI/API handoff | Legacy packaging and host acceptance; measurable delegation benefit |
+| 8 | Migration, cross-platform and end-to-end acceptance; A5 evaluation/security and A6 contract acceptance | Exact-SHA evidence and separate release approval |
 
 First vertical slice: import a V2.7 planning project, persist creative history, export its Bible, preview a scoped revision without writes, apply separately approved changes, reopen and verify revisions/locks and Production HOLD. Reuse A Little Hope for migration and The Last Light for mock jobs. Independent users, real-media QA and fresh host evidence remain separate acceptance gaps. Community growth continues alongside development. Target incremental software cost zero; no paid APIs or cloud infrastructure required.
 
@@ -361,7 +391,7 @@ Historical phase mapping: architecture and planning tests → V2.0 baseline; fiv
 3. **No simulated evidence:** distinguish implementation, CI checks, independent host runs, human-reviewed footage, external-user trials and authorization. Record exact PR/commit and relevant logs for milestone closure.
 4. **Separate approvals:** PR merge, software release, creative decisions, provider access, paid execution and film publication are different gates. **Production GO remains HOLD**.
 5. **Release gate:** only create a tag or GitHub release after exact-SHA validation, applicable security/rights review and separate owner authorization. No permanent release branch required.
-6. **Next practical step (current):** review Phase 1F language decision and separately authorize Phase 2 domain contracts on develop; retain deferred independent-user, cross-host and real-media evidence. Studio proceeds independently. V3.0–V3.4 remain proposals, not implementation GO.
+6. **Next practical step (current):** review Phase 1F evidence and conduct A0 agent architecture/language comparison before separately authorizing Phase 2 domain contracts on develop; retain deferred independent-user, cross-host and real-media evidence. Studio proceeds independently. V3.0–V3.4 remain proposals, not implementation GO.
 
 
 ## Two-year product roadmap — November 2026 to November 2028
